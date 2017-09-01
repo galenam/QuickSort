@@ -3,55 +3,52 @@ using System.Collection;
 
 namespace QuickSort
 { 
-	public class Sorter
+	public static class Sorter
 	{
-		public IEnumerable<int> ArrayToSort {get;set;}
-		public Sorter (IEnumerable<int> _array)
-		{
-			ArrayToSort = _array;
-		}
-
-		public IEnumerable<int> Sort()
+		public void Sort(IEnumerable<int> ArrayToSort, int indexBeginLocal, int indexEnd)
 		{
 			if (ArrayToSort==null || !ArrayToSort.Any() ||ArrayToSort.Take(2).Count == 1 )
 			{
 				return ArrayToSort;
-			}
+			}	
+			var indexBeginLocal = indexBegin, indexEndLocal = indexEndLocal;
+			var length = indexEndLocal-indexBeginLocal;
+			var indexPivot = indexBeginLocal + length/2
+			var pivot = ArrayToSort[indexPivot];
 
-			var length = ArrayToSort.Count();
-			var pivot = ArrayToSort[length/2];
-			var indexBegin=0, indexEnd=length-1;
-
-// todo : подумать, что делать с циклом, зачем он мне тут. Объединить if-ы. Поставить ограничения и выход из цикла по достижению середины
-			for (int i = 0; i < length; i++)
+			while(true)
 			{
-				if (ArrayToSort[indexBegin]> pivot && ArrayToSort[indexEnd]< pivot)
+				if (indexBeginLocal >=indexEndLocal)
 				{
-					var tempElement = ArrayToSort[indexBegin];
-					ArrayToSort[indexBegin] = ArrayToSort[indexEnd];
-					ArrayToSort[indexEnd] = tempElement;
-					indexBegin++;
-					indexEnd--;
+					Sort(ArrayToSort, indexBegin, indexPivot-1);
+					Sort(ArrayToSort, indexPivot, indexEnd);
+					break;
+				}
+				if (ArrayToSort[indexBeginLocal]> pivot && ArrayToSort[indexEndLocal]< pivot)
+				{
+					var tempElement = ArrayToSort[indexBeginLocal];
+					ArrayToSort[indexBeginLocal] = ArrayToSort[indexEndLocal];
+					ArrayToSort[indexEndLocal] = tempElement;
+					indexBeginLocal++;
+					indexEndLocal--;
 				}
 
-				if (ArrayToSort[indexBegin]<= pivot && ArrayToSort[indexEnd] > pivot)
+				if (ArrayToSort[indexBeginLocal]<= pivot && ArrayToSort[indexEndLocal] > pivot)
 				{
-					indexBegin++;
-					indexEnd--;
+					indexBeginLocal++;
+					indexEndLocal--;
 				}
 
-				if (ArrayToSort[indexBegin]>pivot && ArrayToSort[indexEnd] > pivot)
+				if (ArrayToSort[indexBeginLocal]>pivot && ArrayToSort[indexEndLocal] > pivot)
 				{
-					indexEnd--;
+					indexEndLocal--;
 				}
 
-				if (ArrayToSort[indexBegin] <=pivot && ArrayToSort[indexEnd] < pivot)
+				if (ArrayToSort[indexBeginLocal] <=pivot && ArrayToSort[indexEndLocal] < pivot)
 				{
-					indexBegin++;
+					indexBeginLocal++;
 				}
 			}
-
-			return Enumerable.Empty<int>();
 		}
 	}
 }
