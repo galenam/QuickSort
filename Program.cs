@@ -8,10 +8,18 @@ namespace QuickSort
         static void Main(string[] args)
         {
             var array = new int[]{1,2,3,4};
-            foreach (var item in new Sorter(array).Sort())
+
+            foreach (var item in array)
             {
-                Console.Write()
+                Console.Write($"{item} ");
             }
+            Console.WriteLine();
+            Sorter.Sort(array);
+            foreach (var item in array)
+            {
+                Console.Write($"{item} ");
+            }
+            Console.WriteLine();
         }
     }
 }
