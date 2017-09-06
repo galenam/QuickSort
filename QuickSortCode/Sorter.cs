@@ -7,19 +7,20 @@ namespace QuickSort
 	public static class Sorter
 	{
 
-		public static void Sort(IEnumerable<int> ArrayToSort)
+		public static void Sort(int[] ArrayToSort)
 		{
-			// todo : добавить проверку на пустоту
-			SortInner(ArrayToSort, 0, ArrayToSort.Count());
+			if (ArrayToSort==null) {return;}
+			SortInner(ArrayToSort, 0, ArrayToSort.Length );
 		}
 
-		private static void SortInner(IEnumerable<int> ArrayToSort, int indexBegin, int indexEnd)
+		private static void SortInner(int[] ArrayToSort, int indexBegin, int indexEnd)
 		{
 			if (ArrayToSort==null || !ArrayToSort.Any() || ArrayToSort.Take(2).Count() == 1 )
 			{
 				return;
 			}	
-			var indexBeginLocal = indexBegin, indexEndLocal = indexEndLocal;
+			var indexBeginLocal = indexBegin;
+			var indexEndLocal = indexEnd;
 			var length = indexEndLocal-indexBeginLocal;
 			var indexPivot = indexBeginLocal + length/2;
 			var pivot = ArrayToSort[indexPivot];
