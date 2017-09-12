@@ -6,57 +6,39 @@ namespace QuickSort
 { 
 	public static class Sorter
 	{
-
-		public static void Sort(int[] ArrayToSort)
-		{
-			if (ArrayToSort==null) {return;}
-			SortInner(ArrayToSort, 0, ArrayToSort.Length );
-		}
-
-		private static void SortInner(int[] ArrayToSort, int indexBegin, int indexEnd)
+		public static void Sort(List<int> ArrayToSort)
 		{
 			if (ArrayToSort==null || !ArrayToSort.Any() || ArrayToSort.Take(2).Count() == 1 )
 			{
 				return;
-			}	
-			var indexBeginLocal = indexBegin;
-			var indexEndLocal = indexEnd;
-			var length = indexEndLocal-indexBeginLocal;
-			var indexPivot = indexBeginLocal + length/2;
-			var pivot = ArrayToSort[indexPivot];
+			}
+			SortInner(ArrayToSort, 0, ArrayToSort.Count-1 );
+		}
 
-			while(true)
+		private static void SortInner(List<int> ArrayToSort, int indexBegin, int indexEnd)
+		{	
+			var pivot = ArrayToSort[indexEnd];
+			var i=indexBegin;
+			var countOfWays = indexBegin;
+			var indexPivot = indexEnd;
+			while(countOfWays++<indexEnd)
 			{
-				if (indexBeginLocal >=indexEndLocal)
-				{
-					SortInner(ArrayToSort, indexBegin, indexPivot-1);
-					SortInner(ArrayToSort, indexPivot, indexEnd);
-					break;
+				// если ArrayToSort[i]=pivot надо вставлять прямо после pivot, а не в конец, считатать количество элементов =pivot и проматывать их 
+				// при вложенных  SortInner
+				if (ArrayToSort[i]>=pivot){
+					// во вложенных SortInner нужно добавлять не в конец массива ArrayToSort.Add, а вставлять в конец подмассива ArrayToSort[indexEnd]
+					ArrayToSort.Add(ArrayToSort[i]);
+					ArrayToSort.RemoveAt(i);					
+					indexPivot--;
+					continue;
 				}
-				if (ArrayToSort[indexBeginLocal]> pivot && ArrayToSort[indexEndLocal]< pivot)
-				{
-					var tempElement = ArrayToSort[indexBeginLocal];
-					ArrayToSort[indexBeginLocal] = ArrayToSort[indexEndLocal];
-					ArrayToSort[indexEndLocal] = tempElement;
-					indexBeginLocal++;
-					indexEndLocal--;
-				}
-
-				if (ArrayToSort[indexBeginLocal]<= pivot && ArrayToSort[indexEndLocal] > pivot)
-				{
-					indexBeginLocal++;
-					indexEndLocal--;
-				}
-
-				if (ArrayToSort[indexBeginLocal]>pivot && ArrayToSort[indexEndLocal] > pivot)
-				{
-					indexEndLocal--;
-				}
-
-				if (ArrayToSort[indexBeginLocal] <=pivot && ArrayToSort[indexEndLocal] < pivot)
-				{
-					indexBeginLocal++;
-				}
+				i++;
+			}
+			if (indexBegin<indexPivot-1){
+				SortInner(ArrayToSort, indexBegin, indexPivot-1);
+			}
+			if (indexPivot+1< indexEnd){
+				SortInner(ArrayToSort, indexPivot+1, indexEnd);
 			}
 		}
 	}

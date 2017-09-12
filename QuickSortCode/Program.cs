@@ -1,21 +1,22 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace QuickSort
 {
     class Program
     {
-        // https://ru.wikipedia.org/wiki/%D0%91%D1%8B%D1%81%D1%82%D1%80%D0%B0%D1%8F_%D1%81%D0%BE%D1%80%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%BA%D0%B0
+        // http://blog.cybdev.org/algoritm-bystroy-sortirovki-quick-sort-algorithm
         static void Main(string[] args)
         {
-            var array = new int[]{1,2,3,4};
+			var items = new List<int> { 3,5,7,25,89,2,5,7,9,3,68,0,3,3,7,9};		
 
-            foreach (var item in array)
+            foreach (var item in items)
             {
                 Console.Write($"{item} ");
             }
             Console.WriteLine();
-            Sorter.Sort(array);
-            foreach (var item in array)
+            Sorter.Sort(items);
+            foreach (var item in items)
             {
                 Console.Write($"{item} ");
             }
