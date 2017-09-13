@@ -23,11 +23,9 @@ namespace QuickSort
 			var indexPivot = indexEnd;
 			while(countOfWays++<indexEnd)
 			{
-				// если ArrayToSort[i]=pivot надо вставлять прямо после pivot, а не в конец, считатать количество элементов =pivot и проматывать их 
-				// при вложенных  SortInner
 				if (ArrayToSort[i]>=pivot){
-					// во вложенных SortInner нужно добавлять не в конец массива ArrayToSort.Add, а вставлять в конец подмассива ArrayToSort[indexEnd]
-					ArrayToSort.Add(ArrayToSort[i]);
+					var indexInsert = ArrayToSort[i]==pivot ? indexPivot+1 : indexEnd+1;
+					ArrayToSort.Insert(indexInsert, ArrayToSort[i]);
 					ArrayToSort.RemoveAt(i);					
 					indexPivot--;
 					continue;
