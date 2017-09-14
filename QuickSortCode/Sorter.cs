@@ -21,10 +21,19 @@ namespace QuickSort
 			var i=indexBegin;
 			var countOfWays = indexBegin;
 			var indexPivot = indexEnd;
+			var countOfPivot = 1;
 			while(countOfWays++<indexEnd)
 			{
 				if (ArrayToSort[i]>=pivot){
-					var indexInsert = ArrayToSort[i]==pivot ? indexPivot+1 : indexEnd+1;
+					int indexInsert=0;
+					if (ArrayToSort[i]==pivot){
+						indexInsert = indexPivot+1;
+						countOfPivot++;
+					}
+					else
+					{
+						 indexInsert = indexEnd+1;
+					}
 					ArrayToSort.Insert(indexInsert, ArrayToSort[i]);
 					ArrayToSort.RemoveAt(i);					
 					indexPivot--;
@@ -35,7 +44,7 @@ namespace QuickSort
 			if (indexBegin<indexPivot-1){
 				SortInner(ArrayToSort, indexBegin, indexPivot-1);
 			}
-			if (indexPivot+1< indexEnd){
+			if (indexPivot+countOfPivot< indexEnd){
 				SortInner(ArrayToSort, indexPivot+1, indexEnd);
 			}
 		}
