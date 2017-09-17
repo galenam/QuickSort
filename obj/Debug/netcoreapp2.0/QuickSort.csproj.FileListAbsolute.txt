@@ -1,0 +1,15 @@
+D:\My\dev\QuickSort\bin\Debug\netcoreapp2.0\QuickSort.deps.json
+D:\My\dev\QuickSort\bin\Debug\netcoreapp2.0\QuickSort.runtimeconfig.json
+D:\My\dev\QuickSort\bin\Debug\netcoreapp2.0\QuickSort.runtimeconfig.dev.json
+D:\My\dev\QuickSort\bin\Debug\netcoreapp2.0\QuickSort.dll
+D:\My\dev\QuickSort\bin\Debug\netcoreapp2.0\QuickSort.pdb
+D:\My\dev\QuickSort\obj\Debug\netcoreapp2.0\QuickSort.csproj.CoreCompileInputs.cache
+D:\My\dev\QuickSort\obj\Debug\netcoreapp2.0\QuickSort.AssemblyInfoInputs.cache
+D:\My\dev\QuickSort\obj\Debug\netcoreapp2.0\QuickSort.AssemblyInfo.cs
+D:\My\dev\QuickSort\obj\Debug\netcoreapp2.0\QuickSort.dll
+D:\My\dev\QuickSort\obj\Debug\netcoreapp2.0\QuickSort.pdb
+I:\Dev\QuickSort\obj\Debug\netcoreapp2.0\QuickSort.csproj.CoreCompileInputs.cache
+I:\Dev\QuickSort\obj\Debug\netcoreapp2.0\QuickSort.AssemblyInfoInputs.cache
+I:\Dev\QuickSort\obj\Debug\netcoreapp2.0\QuickSort.AssemblyInfo.cs
+I:\Dev\QuickSort\obj\Debug\netcoreapp2.0\QuickSort.dll
+I:\Dev\QuickSort\obj\Debug\netcoreapp2.0\QuickSort.pdb
